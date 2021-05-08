@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Solar savings calculator</title>
+
+    <script>
+        function computeSavings() {
+            var irradience = document.getElementById("irradience").value;
+            var roof_space = document.getElementById("roof_space").value;
+            var unit_cost = document.getElementById("unit_cost").value;
+            var efficiency = (irradience * .19);
+            var generation = (efficiency * roof_space);
+            var savings = (generation * (unit_cost * .01)).toFixed(2);
+            document.getElementById("savings").innerHTML = "Your Savings = €" + savings;
+        }
+    </script>
+</head>
+
+<body>
+    <section class="form">
+        <p>Irradience/Location: <input id="irradience" type="number" min="1" max="1000000" onchange="computeSavings()">
+            Kwhr
+        </p>
+        <p>Roof Space: <input id="roof_space" type="number" min="0" max="100" value="10" steps=".1"
+                onchange="computeSavings()"> m2</p>
+        <p>Unit Cost: <input id="unit_cost" type="number" min="1" max="72" value="1" step="1"
+                onchange="computeSavings()"> cents</p>
+        <h2 id="savings"></h2>
+    </section>
+</body>
+
+</html>
