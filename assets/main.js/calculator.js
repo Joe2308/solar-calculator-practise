@@ -25,3 +25,12 @@ function computeSavings() {
         document.getElementById("savings").innerHTML = "Your Annual Savings = €" + savings;
     }
 }
+
+document.getElementById("irradience").addEventListener("change", showAnswer);
+document.getElementById("roof_space").addEventListener("change", showAnswer);
+document.getElementById("unit_cost").addEventListener("change", showAnswer);
+document.getElementById("orientation").addEventListener("change", showAnswer);
+
+function showAnswer() {
+    document.getElementById('answer').style.display = 'block';
+}

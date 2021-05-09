@@ -26,12 +26,20 @@ p {
     margin-top: 100px;
 }
 
-.answer {
-    background-color: white;
+#answer {
+    display: none;
     width: 50%;
+    height: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
+    border: black 1px solid;
+    text-align: center;
+    box-shadow: 5px 10px grey;
+    background-color: orange
 }
+
+
 
 
 
