@@ -1,9 +1,10 @@
+
 .form {
     width: 50%;
     height: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 50px;
     border: black 1px solid;
     text-align: center;
     box-shadow: 5px 10px grey;
@@ -13,4 +14,25 @@
 p {
     font-size: 25px;
     font-weight: 700;
+    text-align: center;
 }
+
+.calculator {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: orange;
+    text-shadow: 1px 1px 3px #000000;
+    margin-top: 100px;
+}
+
+.answer {
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+

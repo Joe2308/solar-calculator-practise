@@ -7,30 +7,95 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Solar savings calculator</title>
 
-    <script>
-        function computeSavings() {
-            var irradience = document.getElementById("irradience").value;
-            var roof_space = document.getElementById("roof_space").value;
-            var unit_cost = document.getElementById("unit_cost").value;
-            var efficiency = (irradience * .19);
-            var generation = (efficiency * roof_space);
-            var savings = (generation * (unit_cost * .01)).toFixed(2);
-            document.getElementById("savings").innerHTML = "Your Savings = €" + savings;
-        }
-    </script>
 </head>
 
 <body>
+
+    <h2 class="calculator">Try Our Solar savings Calculator!</h2>
+
     <section class="form">
-        <p>Irradience/Location: <input id="irradience" type="number" min="1" max="1000000" onchange="computeSavings()">
-            Kwhr
-        </p>
-        <p>Roof Space: <input id="roof_space" type="number" min="0" max="100" value="10" steps=".1"
-                onchange="computeSavings()"> m2</p>
-        <p>Unit Cost: <input id="unit_cost" type="number" min="1" max="72" value="1" step="1"
-                onchange="computeSavings()"> cents</p>
-        <h2 id="savings"></h2>
+        <div class="location-select">
+            <h2>Select Your County</h2>
+            <select input id="irradience" type="number" min="1" max="100000">
+                <option disable hidden selected value="default">Choose County</option>
+                <option value="1000">Donegal</option>
+                <option value="1050">Derry</option>
+                <option value="1100">Antrim</option>
+                <option value="1150">Down</option>
+                <option value="1050">Tyrone</option>
+                <option value="1100">Armagh</option>
+                <option value="1020">Fermanagh</option>
+                <option value="980">Cavan</option>
+                <option value="960">Monaghan</option>
+                <option value="980">Lietrim</option>
+                <option value="990">Louth</option>
+                <option value="850">Meath</option>
+                <option value="900">Sligo</option>
+                <option value="820">Longford</option>
+                <option value="780">Roscommon</option>
+                <option value="830">Mayo</option>
+                <option value="880">Westmeath</option>
+                <option value="980">Galway</option>
+                <option value="850">Offaly</option>
+                <option value="900">Laois</option>
+                <option value="920">Kildare</option>
+                <option value="1000">Dublin</option>
+                <option value="1120">Wicklow</option>
+                <option value="1100">Carlow</option>
+                <option value="1160">Clare</option>
+                <option value="1200">Kilkenny</option>
+                <option value="1230">Tipperary</option>
+                <option value="1180">Limerick</option>
+                <option value="1220">Kerry</option>
+                <option value="1250">Cork</option>
+                <option value="1280">Wexford</option>
+                <option value="1270">Waterford</option>
+            </select>
+        </div>
+
+        <div class="orientation-select">
+            <h2>Select Your Roof Orientation</h2>
+            <select input id="orientation" type="text">
+                <option value="south">South</option>
+                <option value="west">West</option>
+                <option value="east">East</option>
+            </select>
+        </div>
+
+        <p>Roof Space <input id="roof_space" type="number" min="0" max="1000" value="5" steps=".1"> m2</p>
+
+        <p>Unit Cost <input id="unit_cost" type="number" min="1" max="100" value="1" step="1"> cents</p>
+
+        <div class="answer">
+            <h2 id="savings"></h2>
+        </div>
+
     </section>
+
+    <script src="assets/main.js/calculator.js"></script>
 </body>
+
+<script>
+    function computeSavings() {
+        var irradience = document.getElementById("irradience").value;
+        var roof_space = document.getElementById("roof_space").value;
+        var unit_cost = document.getElementById("unit_cost").value;
+        var orientation = document.getElementById("orientation").value;
+        var efficiency = (irradience * .19);
+        if (orientation === "west") {
+            efficiency = (irradience * .17);
+        } else if (orientation === "east") {
+            efficiency = (irradience * .15);
+        }
+        var generation = (efficiency * roof_space);
+        var savings = (generation * (unit_cost * .01)).toFixed(2);
+        savings = savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ");
+        if (irradience === "default") {
+            document.getElementById("savings").innerHTML = "Please Choose County!";
+        } else {
+            document.getElementById("savings").innerHTML = "Your Annual Savings = €" + savings;
+        }
+    }
+</script>
 
 </html>
